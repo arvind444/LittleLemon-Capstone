@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Reservation",
     "rest_framework",
+    "rest_framework.authtoken",
+    "djoser",
 ]
 
 MIDDLEWARE = [
@@ -129,6 +131,24 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     "Reservation/static",
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES" : [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+        "rest_framework_xml.renderers.XMLRenderer",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES" : [
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+}
+
+
+DJOSER={
+    "USER_ID_FIELD":"username"
+    }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
